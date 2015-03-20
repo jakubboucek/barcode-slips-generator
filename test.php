@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet" type="text/css">
 <style>
 	table {
 		border-spacing: 0;
@@ -5,13 +6,18 @@
 	}
 	table td {
 		padding: 10px 5px;
-		border: 0.1px solid #ccc;
+		border: 1px solid #ccc;
 		text-align: center;
 		line-height: 1;
 	}
+	table td .logo {
+		float:left;
+	}
 	table td div {
-		font-size: 2em;
-		font-family: Consolas, sans-serif;
+		font-size: 1.6em;
+		font-family: 'Ubuntu Mono', sans-serif;
+		font-weight: 400;
+		padding: 3px 0 0 0;
 	}
 </style>
 <table>
@@ -21,10 +27,12 @@
 	<tr>
 		<?php
 		for($j=0;$j<3;$j++) {
-			$word = get('code', getWord(get('length',4)));
+			$word = get('code', getWord(get('length',3)));
+			$code = str_replace('-', '', $word);
 			?>
 				<td>
-					<img src="gen.php?code=<?php echo $word ?>" width="200" height="20">
+					<img src="logo.png" width=46 height=46 class="logo">
+					<img src="gen.php?code=<?php echo $code; ?>" width="150" height="20">
 					<div><?php echo $word; ?></div>
 				</td>
 			<?php
@@ -40,12 +48,10 @@
 
 function getWord($length=3) {
 	//return "00000";
-	$rooms = "ABCDKLPSV";
-	$chars = "ABCDEFHKLMNPQRSTUWXZ0123456789";
+	$chars = "ABCDEFHKLMNPQRSTUWX0123456789";
 	$strlen = strlen($chars)-1;
 
-	$o = "DXF";
-	//$o .= $rooms[mt_rand(0,strlen($rooms)-1)];
+	$o = "SB-FT-";
 
 	for($i=0;$i<$length;$i++) {
 		$o .= $chars[mt_rand(0,$strlen)];
