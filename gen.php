@@ -173,7 +173,7 @@ for($c = $width, $i=0; $i< $c; $i++) {
 
 $scale = 4;
 $height = 1;
-$space = 10;
+$space = 0;
 $barwidth = $width*$scale+2*$space*$scale+3;
 
 $im = imagecreatetruecolor($barwidth,$height);

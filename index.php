@@ -11,8 +11,11 @@
 	<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet" type="text/css">
 	<style>
 		table {
-			border-spacing: 0;
-			border-collapse: collapse;
+			margin:auto;
+			margin-top: 50mm;
+			text-align: center;
+			border-spacing: 3mm 1.8mm;
+			border-collapse: separate;
 		}
 		table td {
 			border: 1px solid transparent;
@@ -22,30 +25,39 @@
 			padding: 5px 0px;
 			text-align: center;
 			line-height: 1;
-			width: 104mm;
-			height: 40.9mm;
+			width: 20.2mm;
+			height: 7.7mm;
 			-webkit-box-sizing: border-box; /* Safari 3.0 - 5.0, Chrome 1 - 9, Android 2.1 - 3.x */
 			-moz-box-sizing: border-box;    /* Firefox 1 - 28 */
 			box-sizing: border-box;         /* Safari 5.1+, Chrome 10+, Firefox 29+, Opera 7+, IE 8+, Android 4.0+, iOS any */
 			overflow: hidden;
+			position: relative;
 		}
 		table td .logo {
 			float:left;
-			width: 84px;
-			height: 84px;
-			margin-left: 10px;
+			width: 3mm;
+			height: 3mm;
+			position: absolute;
+			top: 4.5mm;
+			left: 1.5mm;
+			z-index: 2;
 		}
 		table td .code {
-			margin-top: 10px;
-			height: 65px;
-			width: 298px;
+			position: absolute;
+			top: 1mm;
+			left: 1.9mm;
+			width: 16.8mm;
+			height: 3mm;
+			z-index: 1;
 		}
 		table td .word {
-			margin-top: 8px;
-			font-size: 3.4em;
+			position: absolute;
+			top: 5.1mm;
+			left: 5.7mm;
+			font-size: 0.5em;
 			font-family: 'Fira Mono', sans-serif;
 			font-weight: 400;
-			padding: 3px 0 0 0;
+			padding: 0px 0 0 0;
 		}
 
 		header {
@@ -98,7 +110,7 @@
 				border: 0.5mm solid transparent;
 			}
 			body.border table td {
-				border: 0.5mm solid #ccc;
+				/*border: 0.5mm solid #ccc;*/
 			}
 		}
 
@@ -107,29 +119,23 @@
 				border: 0.5mm solid #ccc;
 			}
 			body.border table td {
-				border: 0.5mm solid red;
+				/*border: 0.5mm solid red;*/
 			}
 		}
 	</style>
 </head>
-<body class="">
-
-	<header>
-		<input type="button" value="Další kódy" id="refresh">
-		<input type="checkbox" id="test"> <label for="test">S tisknutelným rámečkem</label>
-		<button type="button" id="print"><div class="spinner"></div>Uložit a tisknout</a>
-	</header>
+<body class="border">
 
 <table>
 	<?php
 		$saved = json_decode(file_get_contents('data/currentCodes.json'), TRUE);
 		$currentCodes = $saved['currentCodes'];
 		$codes = array();
-		for($i=0;$i<7; $i++) {
+		for($i=0;$i<12; $i++) {
 	?>
 	<tr>
 		<?php
-		for($j=0;$j<2;$j++) {
+		for($j=0;$j<6;$j++) {
 			do {
 				$word = getWord(get('length',3));
 				$codes[] = $code = str_replace('-', '', $word);
@@ -156,7 +162,7 @@ function getWord($length=3) {
 	$chars = "ABCDEFHKLMNPQRSTUWX0123456789";
 	$strlen = strlen($chars)-1;
 
-	$o = "SB-FT-";
+	$o = "SB-IT-";
 
 	for($i=0;$i<$length;$i++) {
 		$o .= $chars[mt_rand(0,$strlen)];
