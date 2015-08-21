@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule test.php /barcode/ [R=301,L]

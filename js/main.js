@@ -42,6 +42,12 @@ $(function(){
 		var spinner = new Spinner(spinOpts).spin();
 		$('.spinner', printb).prepend(spinner.el);
 		printb.prop('disabled', true);
+
+		var codes = window.currentCodes;
+		$.post('add.php', {codes: JSON.stringify(codes)}, function(){
+			$('header').addClass('ok');
+			$('.spinner', printb).empty();
+		}, 'json');
 	});
 
 });
